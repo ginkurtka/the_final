@@ -1,18 +1,18 @@
 {% extends "main.html" %}
-{% block <title> %}
+
+{% block title %}
     All Hotels
 {% endblock %}
 
 {% block content %}
-<div class="hotels">
-    {% for hotel in hotels %}
-    <div class="hotel">
-        <h2>name: {{ hotel.name }}  </h2>
-        <h4>location:{{ hotel.location }} </h4>
-        <h4>description: {{ hotel.description }} </h4>
-        <p>photos:{{ hotel.photos }} </p>
-        <h4>rating:{{ hotel.rating }} </h4>
-    </div>
-{% endfor %}
-</div>
-{%endblock%}
+        {% for hotel in hotels %}
+            <div class="hotel">
+                <h2>name: {{ hotel.name }}</h2>
+                <h4>location: {{ hotel.location }}</h4>
+                <h4>description: {{ hotel.description }}</h4>
+                <img class="hotel_picture" src="{{ request.scheme }}://{{ request.get_host }}/media/{{ hotel.photos }}" alt="Grapefruit slice atop a pile of other slices" />
+                <p>photos: {{ hotel.photos }}</p>
+                <h4>rating: {{ hotel.rating }}</h4>
+            </div>
+        {% endfor %}
+{% endblock %}

@@ -44,11 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'config',
+    
     
 
     # local
-    'apps.booking.apps.HotelConfig'
+    'apps.booking.apps.HotelConfig',
+    'config',
 ]
 
 MIDDLEWARE = [

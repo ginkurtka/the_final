@@ -10,7 +10,15 @@
     <div class="new-booking-container">
         <form method="post">
             {% csrf_token %}
-
+            <div class="mb-3">
+                <label for="hotel" class="form-label">Hotel</label>
+                <select class="form-control" id="hotel" name="hotel">
+                    <option value="" selected>---</option>
+                    {% for hotel in hotels %}
+                        <option value="{{ hotel.id }}">{{ hotel.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <div class="mb-3">
                 <label for="room" class="form-label">Room</label>
                 <select class="form-control" id="room" name="room">
@@ -20,7 +28,6 @@
                     {% endfor %}
                 </select>
             </div>
-
             <div class="mb-3">
                 <label for="check_in_date" class="form-label">Check-in Date</label>
                 <input type="date" class="form-control" id="check_in_date" name="check_in_date">

@@ -1,4 +1,4 @@
-from django.forms import ModelForm, fields, widgets
+from django import forms
 from .models import Booking, Room
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
@@ -13,7 +13,7 @@ class CreationForm(UserCreationForm):
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ['room', 'check_in_date', 'check_out_date']
+        fields = ['hotel', 'room', 'check_in_date', 'check_out_date']
         widgets = {
             'check_in_date': forms.DateInput(attrs={'type': 'date'}),
             'check_out_date': forms.DateInput(attrs={'type': 'date'}),
@@ -22,6 +22,7 @@ class BookingForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BookingForm, self).__init__(*args, **kwargs)
         self.fields['room'].queryset = Room.objects.filter(available=True)
+
 
     def clean(self):
         cleaned_data = super().clean()

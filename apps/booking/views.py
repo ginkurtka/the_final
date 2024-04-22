@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
+from .forms import BookingForm
+
 from apps.booking.models import (
     Hotel,
     Review,
@@ -35,17 +37,33 @@ def get_all_hotels(request):
         context=context
     )
     
-    def create_new_booking(request):
-        users = User.objects.all()
-        room = Room.objects.all()
-        hotel = Hotel.objects.all()
-        
-        if request.method == 'POST':
-            return render(
-                request=request,
-                template_name='booking/create_booking.html',
-            )
-        return render(
-            request=request,
-            template_name='booking/create_booking.html',
-        )
+def create_booking(request):
+    rooms = Room.objects.filter(available=True)  # dоступные комнаты
+    hotels = Hotel.objects.all()  #все отели
+
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save()  #  брони
+            return redirect('router:booking:all_booking')
+    else:
+        form = BookingForm()
+
+    context = {
+        "form": form,
+        "rooms": rooms,
+        "hotels": hotels,
+    }
+    return render(request, 'booking/create_booking.html', context)
+
+# def create_booking(request):
+#     if request.method == 'POST':
+#         form = BookingForm(request.POST)
+#         if form.is_valid():
+#             booking = form.save(commit=False)
+#             booking.user_id = request.user.id  # если пользователь уже аутентифицирован
+#             booking.save()
+#             return redirect('booking_success')
+#     else:
+#         form = BookingForm()
+#     return render(request, 'booking/create_booking.html', {'form': form})

@@ -14,7 +14,7 @@ class Hotel(models.Model):
     deleted = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return f"Booking: {self.room} at {self.hotel}"
 
 class Room(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
@@ -31,7 +31,8 @@ class Room(models.Model):
         return f"{self.room_type} at {self.hotel.name}"
 
 class Booking(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     check_in_date = models.DateField()
     check_out_date = models.DateField()

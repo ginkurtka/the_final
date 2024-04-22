@@ -1,0 +1,60 @@
+
+.hotel {
+    box-sizing: border-box;
+    border: 1px solid #2ECC71;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+    background-color: #ecf0f1;
+    width:30%;
+    height:20%;
+}
+
+.hotel_picture{
+    object-fit: contain;
+    width: 10rem;
+    height: 10rem;
+}
+
+.hotel h2, .hotel h4, .hotel p {
+    margin: 5px 0;
+}
+
+.hotel h4 {
+    color: #16a085;
+}
+
+.hotel h4 b {
+    color: chocolate;
+}
+
+
+.hotel p {
+    color: #34495e;
+}
+
+
+.hotel h4[style*="color: chocolate"] {
+    color: #e67e22;
+}
+
+.hotel-link {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.hotel-link:hover {
+    background-color: #dfe6e9; /* Светлый фон при наведении */
+    border-color: #27ae60; /* Темно-зеленая граница при наведении */
+}
+
+.hotel-link:hover h2 {
+    color: #27ae60;
+}
+
+.navbar{
+    color:red
+}

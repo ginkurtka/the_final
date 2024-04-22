@@ -8,6 +8,8 @@ urlpatterns = [
     path('', include('apps.routers')),
 ]
 
+print(f'{settings.STATIC_URL}{settings.STATIC_ROOT}')
+print(f'{settings.MEDIA_URL}{settings.MEDIA_ROOT} ')
 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

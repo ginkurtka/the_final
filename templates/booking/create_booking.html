@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+{% block title %}
+    Create New Booking
+{% endblock %}
+
+{% block content %}
+    <div class="new-booking-title">
+        Create New Booking
+    </div>
+    <div class="new-booking-container">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="room" class="form-label">Room</label>
+                <select class="form-control" id="room" name="room">
+                    <option value="" selected="">---</option>
+                    {% for room in rooms %}
+                        <option value="{{ room.id }}">{{ room.room_type }} at {{ room.hotel.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="check_in_date" class="form-label">Check-in Date</label>
+                <input type="date" class="form-control" id="check_in_date" name="check_in_date">
+            </div>
+
+            <div class="mb-3">
+                <label for="check_out_date" class="form-label">Check-out Date</label>
+                <input type="date" class="form-control" id="check_out_date" name="check_out_date">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+{% endblock %}

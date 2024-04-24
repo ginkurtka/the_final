@@ -7,8 +7,9 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from apps.booking.models import Booking
 
-from apps.booking.models import Task, SubTask
+# from apps.booking.models import Booking, 
 from apps.user.forms import LoginForm, CreateUserForm
 
 
@@ -69,24 +70,18 @@ def register(request):
 @login_required(login_url='router:user:login')
 def us_info(request):
     user = get_object_or_404(User, id=request.user.id)
-    tasks = Task.objects.filter(
-        creator=user.id
-    )
-    subtasks = SubTask.objects.filter(
-        creator=user.id
-    )
 
-    context = {
-        "user": user,
-        "tasks": tasks,
-        "subtasks": subtasks
-    }
+    # booking = Booking.objects.all()
+    # Booking.objects.filter(user_id = user.id)
+    booking_id = Booking.objects.filter(user_id = 3)
+    # print(f'{booking.}')
+    print(f'{booking_id}')
 
-    return render(
-        request=request,
-        template_name='user/profile.html',
-        context=context
-    )
+    
+    # print(f"==>> user: {user.id}")
+    # find_user = User.objects.get(id=user.id)
+    # print(f"==>> find_user.name : {find_user.first_name} {find_user.last_name}")
+    return redirect('router:user:register')
 
 
 @login_required(login_url='router:user:login')

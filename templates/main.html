@@ -1,6 +1,8 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang='en'>
 <head>
+    {% load static %}
     {% load static %}
     <meta charset='UTF-8'>
     <link rel='stylesheet' href="{% static 'booking/css/styles.css' %}">
@@ -23,6 +25,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/hotels">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/hotels">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Profile</a>
@@ -43,6 +46,10 @@
                   </li>
                    <li class="nav-item">
                     <a class="nav-link" href="/sign-up" tabindex="-1">Sign Up</a>
+                    <a class="nav-link" href="/login" tabindex="-1">Log in</a>
+                  </li>
+                   <li class="nav-item">
+                    <a class="nav-link" href="/sign-up" tabindex="-1">Sign Up</a>
                   </li>
                 </ul>
                 <form class="d-flex">
@@ -52,6 +59,10 @@
               </div>
             </div>
           </nav>
+          {% comment %} <div class="content-container">
+              {% block content %}
+              {% endblock %}
+          </div> {% endcomment %}
           <div class="content-container">
               {% block content %}
               {% endblock %}
@@ -59,3 +70,4 @@
     </div>
 </body>
 </html>
+

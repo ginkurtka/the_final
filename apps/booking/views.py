@@ -35,8 +35,7 @@ def get_all_hotels(request):
         request=request,
         template_name='booking/all_hotels.html',
         context=context
-    )
-    
+    )   
 def create_booking(request):
     rooms = Room.objects.filter(available=True)  # dоступные комнаты
     hotels = Hotel.objects.all()  #все отели
